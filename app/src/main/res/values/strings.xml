@@ -23,6 +23,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="what_is_your_email">What is Your Email?</string>
     <string name="user_name">User Name</string>
+    <string name="find_the_nearest_location">Find the nearest Location</string>
 
 
 </resources>
