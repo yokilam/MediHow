@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         setFireBase();
-        textView.setText("Hello "+ mUsername);
+        textView.setText("Heyyyyy "+ mUsername);
 
     }
 
