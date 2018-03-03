@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MediHow</string>
+
+    <string name="title_activity_maps">Map</string>
+
     <string name="welcome_msg">Welcome!</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_in">Sign In</string>
