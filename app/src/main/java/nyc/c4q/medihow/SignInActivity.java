@@ -2,10 +2,13 @@ package nyc.c4q.medihow;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -38,7 +41,7 @@ import java.util.List;
 public class SignInActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
-
+    EditText email,password;
     private FirebaseAuth mFirebaseAuth;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
@@ -59,17 +62,56 @@ public class SignInActivity extends AppCompatActivity implements
                 .build();
         mFirebaseAuth = FirebaseAuth.getInstance();
 
+        email=findViewById(R.id.email);
+        password=findViewById(R.id.password);
+
+
         findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.google_sign_in_button).setOnClickListener(this);
+        findViewById(R.id.sign_up).setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         Log.e("this button is clicked",v.getId()+"");
         switch (v.getId()) {
-            case R.id.sign_in_button:
+            case R.id.google_sign_in_button:
                 signIn();
+            case R.id.sign_up:
+
+                RegisterFragment registerFragment = new RegisterFragment();
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.sign_in_layout,registerFragment);
+                transaction.commit();
+            case R.id.sign_in_button:
+               if (!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
+                   signUser(email.getText().toString(),password.getText().toString());
+               }
                 break;
         }
+    }
+
+    private void signUser(String email,String password) {
+        mFirebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -100,7 +142,6 @@ public class SignInActivity extends AppCompatActivity implements
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
