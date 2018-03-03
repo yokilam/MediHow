@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 
+import nyc.c4q.medihow.model.SurveyQuestions;
 import nyc.c4q.medihow.retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
                 .build();
+
     }
 
 
