@@ -60,9 +60,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onResponse(Call<List<MedicareOffice>> call, Response<List<MedicareOffice>> response) {
                 medicareOfficeList = response.body();
                 Log.d("onResponse: ", "" + medicareOfficeList.size());
+                Log.d("onResponse: ", "" + medicareOfficeList.get(0).getLatitude());
+                Log.d("onResponse: ", "" + medicareOfficeList.get(0).getLongtitude());
                 for (MedicareOffice b : medicareOfficeList) {
-                    double lat = Integer.valueOf(b.getLatitude());
-                    double lng = Integer.valueOf(b.getLongtitude());
+                    double lat = Double.valueOf(b.getLatitude());
+                    double lng = Double.valueOf(b.getLongtitude());
                     LatLng temp = new LatLng(lat, lng);
                     offices.put(b.getName_of_medical_office(),temp);
                 }

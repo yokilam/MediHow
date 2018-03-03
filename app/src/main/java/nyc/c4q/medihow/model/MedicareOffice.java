@@ -13,7 +13,7 @@ public class MedicareOffice {
     private String community_board;
     private String community_council;
     private String latitude;
-    private String longtitude;
+    private String longitude;
     private String name_of_borough;
     private String name_of_medicaid_office;
     private String nta;
@@ -46,7 +46,7 @@ public class MedicareOffice {
     }
 
     public String getLongtitude() {
-        return longtitude;
+        return longitude;
     }
 
     public String getName_of_borough() {
