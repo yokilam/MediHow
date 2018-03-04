@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_container"
-    tools:context="nyc.c4q.medihow.MainActivity"
-    >
+    tools:context="nyc.c4q.medihow.MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +26,12 @@
             android:layout_height="wrap_content"
             android:text="Find the nearest Location"
             android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/eligibility_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take eligibility test"/>
     </LinearLayout>
 
 </FrameLayout>
