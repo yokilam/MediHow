@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences mSharedPreferences;
     private GoogleApiClient mGoogleApiClient;
     private Button takeTest;
+    private CardView testCard, locationCard;
 
     TextView textView;
 
@@ -61,10 +63,10 @@ public class MainActivity extends AppCompatActivity
 
         takeTest= findViewById(R.id.eligibility_test);
         LocationButton= findViewById(R.id.find_the_nearest_location_button);
+        testCard= findViewById(R.id.test_card_view);
+        locationCard=findViewById(R.id.location_card_view);
 
-        Toast.makeText(this, "HELLOOO?", Toast.LENGTH_SHORT).show();
-
-        LocationButton.setOnClickListener(new View.OnClickListener() {
+        locationCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(MainActivity.this, MapsActivity.class);
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        takeTest.setOnClickListener(new View.OnClickListener() {
+        testCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                getSupportFragmentManager().beginTransaction().
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         setFireBase();
-        textView.setText("Heyyyyy "+ mUsername);
+        textView.setText("Hello "+ mUsername);
 
 
 
@@ -143,6 +145,5 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
-
 
 }

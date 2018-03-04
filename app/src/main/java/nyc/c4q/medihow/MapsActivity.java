@@ -1,5 +1,6 @@
 package nyc.c4q.medihow;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -130,6 +132,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 double lat = location.getLatitude();
                                 double lng = location.getLongitude();
                                 mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("My Location"));
+                                CameraPosition myLocation = CameraPosition.builder()
+                                        .target(new LatLng(lat, lng))
+                                        .zoom(16)
+                                        .bearing(0)
+                                        .tilt(45)
+                                        .build();
+                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(myLocation));
                             }
                         }
                     });
@@ -150,4 +159,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fragment.show(getSupportFragmentManager(),fragment.getTag());
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent= new Intent(MapsActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

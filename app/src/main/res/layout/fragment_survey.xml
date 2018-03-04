@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="230dp">
 
         <TextView
             android:id="@+id/question"
@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             tools:text="SOME QUESTION"
             android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:gravity="center"/>
 
         <RadioButton
             android:id="@+id/yes_radio_button"
