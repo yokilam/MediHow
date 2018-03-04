@@ -17,14 +17,14 @@
             android:layout_height="match_parent"
             tools:context="nyc.c4q.medihow.MapsActivity" />
 
-
-            <Button
-                android:layout_gravity="bottom"
-                android:id="@+id/toggle_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/toggle_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="57dp" />
 
 
     </RelativeLayout>

@@ -45,7 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:textColorHint="@color/tintwhite"/>
+        android:textColorHint="@color/tintwhite"
+        android:singleLine="true"
+        />
 
     <Button
         android:id="@+id/reg_in_button"

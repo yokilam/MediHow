@@ -93,14 +93,14 @@ public class RegisterFragment extends Fragment implements
                                                         .setPositiveButton("No / I don't know ", new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
                                                                 //  deleteSuggestions(position);
-                                                                getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
+                                                                getActivity().startActivity(new Intent(view.getContext(), SurveyActivity.class));
                                                                 getActivity().finish();
                                                             }
                                                         })
                                                         .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
                                                                 // do nothing
-                                                                getActivity().startActivity(new Intent(view.getContext(), SurveyActivity.class));
+                                                                getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
                                                                 getActivity().finish();
                                                             }
                                                         })
