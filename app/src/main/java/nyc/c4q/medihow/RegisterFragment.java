@@ -1,10 +1,12 @@
 package nyc.c4q.medihow;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +63,6 @@ public class RegisterFragment extends Fragment implements
                 }
             }
         });
-
         return view;
     }
 
@@ -83,23 +84,38 @@ public class RegisterFragment extends Fragment implements
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Log.e(TAG, "User profile updated..."+userName.getText().toString());
-                                                getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
-                                                getActivity().finish();
+                                                new AlertDialog.Builder(getActivity())
+                                                        .setTitle("Eligibility")
+                                                        .setMessage("Are You Eligible for Medicare/Medicaid?")
+                                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                //  deleteSuggestions(position);
+                                                                getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
+                                                                getActivity().finish();
+                                                            }
+                                                        })
+                                                        .setNegativeButton("No / I don't know", new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                // do nothing
+                                                                getActivity().startActivity(new Intent(view.getContext(), SurveyActivity.class));
+                                                                getActivity().finish();
+                                                            }
+                                                        })
+                                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                                        .show();
+//                                                getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
+//                                                getActivity().finish();
                                             }
                                         }
                                     });
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(view.getContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
     }
-
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
