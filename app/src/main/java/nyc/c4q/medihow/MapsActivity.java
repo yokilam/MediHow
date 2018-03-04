@@ -32,24 +32,24 @@ import retrofit2.Response;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private MedicareOfficeService medicareOfficeService;
     private List<MedicareOffice> medicareOfficeList;
+
+    private HashMap<String, LatLng> offices;
+
+    private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationClient;
-    private HashMap<String,LatLng> offices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        offices= new HashMap<>();
         getRetrofitCall();
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        offices=new HashMap<>();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
     }
 
     public void getRetrofitCall() {
@@ -68,6 +68,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     LatLng temp = new LatLng(lat, lng);
                     offices.put(b.getName_of_medical_office(),temp);
                 }
+
+                for (String a: offices.keySet()) {
+                    LatLng temp =offices.get(a);
+                    mMap.addMarker(new MarkerOptions().position(temp).title(a));
+                }
             }
 
             @Override
@@ -76,7 +81,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -95,43 +99,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 // Logic to handle location object
                                 double lat = location.getLatitude();
                                 double lng = location.getLongitude();
-                                mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Marker in C4Q"));
+                                mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("My Location"));
                             }
                         }
                     });
         }
-
         Geocoder coder = new Geocoder(getApplicationContext());
         List<Address> address;
         LatLng p1 = null;
-
-        try {
-            // May throw an IOException
-            address = coder.getFromLocationName("3105 Astoria Blvd S, Astoria, NY 11102", 5);
-            if (address != null) {
-                Address location = address.get(0);
-                p1 = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(p1).title("Marker in Astoria - Neptune Diner"));
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        // Add a marker in Sydney and move the camera
-        if (!offices.isEmpty()){
-            Log.e("Size is ",offices.size()+"");
-            for (String a :offices.keySet()){
-                LatLng temp= offices.get(a);
-                mMap.addMarker(new MarkerOptions().position(temp).title(a));
-            }
-        }
-
-        UiSettings uiSettings = mMap.getUiSettings();
-        uiSettings.setZoomControlsEnabled(true);
-        uiSettings.setMyLocationButtonEnabled(true);
-        uiSettings.setMapToolbarEnabled(true);
-        uiSettings.setMapToolbarEnabled(true);
-        uiSettings.setCompassEnabled(true);
-        uiSettings.setAllGesturesEnabled(true);
+        UiSettings settings = mMap.getUiSettings();
+        settings.setCompassEnabled(true);
+        settings.setMyLocationButtonEnabled(true);
+        settings.setAllGesturesEnabled(true);
+        settings.setZoomControlsEnabled(true);
     }
+
+
 }
