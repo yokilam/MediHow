@@ -17,11 +17,7 @@
             android:layout_height="match_parent"
             tools:context="nyc.c4q.medihow.MapsActivity" />
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+
             <Button
                 android:layout_gravity="bottom"
                 android:id="@+id/toggle_button"
@@ -29,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true" />
-        </android.support.v4.widget.NestedScrollView>
+
 
     </RelativeLayout>
 

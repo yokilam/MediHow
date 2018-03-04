@@ -65,6 +65,7 @@ public class SignInActivity extends AppCompatActivity implements
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
 
+        getSupportActionBar().hide();
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.google_sign_in_button).setOnClickListener(this);

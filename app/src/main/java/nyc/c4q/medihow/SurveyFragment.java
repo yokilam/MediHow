@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import nyc.c4q.medihow.model.SurveyQuestions;
 
@@ -45,7 +46,7 @@ SurveryCallBack surveryCallBack;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_survey, container, false);
+        final View view= inflater.inflate(R.layout.fragment_survey, container, false);
         yes= view.findViewById(R.id.yes_radio_button);
         yes.setText("yes");
 
@@ -58,16 +59,12 @@ SurveryCallBack surveryCallBack;
                 "app", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
 
-
         indexOfArray=0;
         question.setText(questions[indexOfArray]);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
 
                 if(yes.isChecked()) {
                     editor.putString(questions[indexOfArray],yes.getText().toString());
@@ -88,6 +85,7 @@ SurveryCallBack surveryCallBack;
 
 
                 if(n==6){
+                    Toast.makeText(view.getContext(), "You are eligible for medicare/medicaid", Toast.LENGTH_LONG).show();
                     surveryCallBack.startMapActivity();
                 }
                 else {
@@ -96,9 +94,7 @@ SurveryCallBack surveryCallBack;
                     yes.setSelected(false);
                     no.setSelected(false);
 
-
                 }
-
             }
         });
 

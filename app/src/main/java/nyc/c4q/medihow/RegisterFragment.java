@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,8 @@ public class RegisterFragment extends Fragment implements
         password = view.findViewById(R.id.password_frag);
         userName = view.findViewById(R.id.user_name);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,14 +90,14 @@ public class RegisterFragment extends Fragment implements
                                                 new AlertDialog.Builder(getActivity())
                                                         .setTitle("Eligibility")
                                                         .setMessage("Are You Eligible for Medicare/Medicaid?")
-                                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                                        .setPositiveButton("No / I don't know ", new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
                                                                 //  deleteSuggestions(position);
                                                                 getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
                                                                 getActivity().finish();
                                                             }
                                                         })
-                                                        .setNegativeButton("No / I don't know", new DialogInterface.OnClickListener() {
+                                                        .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
                                                                 // do nothing
                                                                 getActivity().startActivity(new Intent(view.getContext(), SurveyActivity.class));
