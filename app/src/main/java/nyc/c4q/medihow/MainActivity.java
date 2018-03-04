@@ -47,10 +47,9 @@ public class MainActivity extends AppCompatActivity
     private String mPhotoUrl;
     private SharedPreferences mSharedPreferences;
     private GoogleApiClient mGoogleApiClient;
+    private Button takeTest;
 
     TextView textView;
-
-
 
     private Button LocationButton;
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         textView=findViewById(R.id.textview);
 
-
+        takeTest= findViewById(R.id.eligibility_test);
         LocationButton= findViewById(R.id.find_the_nearest_location_button);
 
         Toast.makeText(this, "HELLOOO?", Toast.LENGTH_SHORT).show();
@@ -73,6 +72,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        takeTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.main_container, new SurveyFragment())
+                        .addToBackStack("test").commit();
+            }
+        });
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Set default username is anonymous.
@@ -102,7 +109,6 @@ public class MainActivity extends AppCompatActivity
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
                 .build();
-
     }
 
 
