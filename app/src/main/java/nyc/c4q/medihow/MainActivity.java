@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity
         setFireBase();
         textView.setText("Heyyyyy "+ mUsername);
 
+
+
     }
 
     private void setFireBase() {
@@ -102,7 +104,6 @@ public class MainActivity extends AppCompatActivity
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
                 .build();
-
     }
 
 
@@ -126,7 +127,6 @@ public class MainActivity extends AppCompatActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override
