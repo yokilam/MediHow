@@ -26,7 +26,6 @@
     <string name="find_the_nearest_location">Find the nearest Location</string>
 
 
-
     <!-- Questions used for survey -->
     <string name="prove_identity">Do you have proof of identity? Examples include: citizenship/residency cards, permits, and passports</string>
     <string name="prove_address">Do you have proof of address? Examples include: lease, letter from landlord, rent receipt, and any government id </string>

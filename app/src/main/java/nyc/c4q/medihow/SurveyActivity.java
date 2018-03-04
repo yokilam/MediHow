@@ -26,21 +26,20 @@ import retrofit2.Response;
 public class SurveyActivity extends AppCompatActivity {
    // Context context;
     public static final String RETRIEVE = "retrieving questions";
-    private RadioButton yes,no;
-    private TextView question;
-    private Button next;
+
 
    @Override
     public void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       //setContentView(R.id.);
-        yes= findViewById(R.id.yes_radio_button);
-        no= findViewById(R.id.no_radio_button);
-        question= findViewById(R.id.question);
-        next= findViewById(R.id.next);
+       setContentView(R.layout.activity_survey);
 
-        question.setText(SurveyQuestions.questions[0]);
-//       getSurveyQuestions();
+
+        getSurveyQuestions();
+//        question.setText(SurveyQuestions.questions[0]);
+
+       getSupportFragmentManager().beginTransaction().
+               replace(R.id.survey_fragment_container, new SurveyFragment()).
+               addToBackStack("survey").commit();
    }
 
     public SurveyQuestions getSurveyQuestions() {
