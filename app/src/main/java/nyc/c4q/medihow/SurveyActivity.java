@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -23,13 +26,21 @@ import retrofit2.Response;
 public class SurveyActivity extends AppCompatActivity {
    // Context context;
     public static final String RETRIEVE = "retrieving questions";
+    private RadioButton yes,no;
+    private TextView question;
+    private Button next;
 
    @Override
     public void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        //setContentView(R.id.);
+        yes= findViewById(R.id.yes_radio_button);
+        no= findViewById(R.id.no_radio_button);
+        question= findViewById(R.id.question);
+        next= findViewById(R.id.next);
 
-       getSurveyQuestions();
+        question.setText(SurveyQuestions.questions[0]);
+//       getSurveyQuestions();
    }
 
     public SurveyQuestions getSurveyQuestions() {

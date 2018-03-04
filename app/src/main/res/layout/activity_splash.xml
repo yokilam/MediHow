@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nyc.c4q.medihow.SplashActivity">
+    tools:context="nyc.c4q.medihow.SplashActivity"
+    android:orientation="vertical"
+    android:background="@drawable/backgroundcolor"
+    >
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/medihow"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="28dp"
+        android:contentDescription="TODO"
         android:src="@drawable/location"
-        android:contentDescription="TODO" />
+        android:layout_alignParentTop="true"/>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/medihow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/catch_phrase"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="35dp"
+        android:gravity="center"
+        android:text="MediHow"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/catch_phrase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="63dp"
+        android:gravity="center"
+        android:textColor="@color/tintwhite"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        tools:text="Get Medicare/Medicaid Now \n For You and Your Family" />
+
+</RelativeLayout>
