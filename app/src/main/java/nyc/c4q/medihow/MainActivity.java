@@ -75,9 +75,11 @@ public class MainActivity extends AppCompatActivity
         takeTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().
-                        replace(R.id.main_container, new SurveyFragment())
-                        .addToBackStack("test").commit();
+//                getSupportFragmentManager().beginTransaction().
+//                        replace(R.id.main_container, new SurveyFragment())
+//                        .addToBackStack("test").commit();
+                Intent intent= new Intent(MainActivity.this, SurveyActivity.class);
+                startActivity(intent);
             }
         });
 
