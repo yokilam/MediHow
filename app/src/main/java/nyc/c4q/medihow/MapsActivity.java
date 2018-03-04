@@ -4,10 +4,17 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -19,6 +26,8 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
+import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,23 +42,41 @@ import retrofit2.Response;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private MedicareOfficeService medicareOfficeService;
-    private List<MedicareOffice> medicareOfficeList;
+    public static List<MedicareOffice> medicareOfficeList;
 
     private HashMap<String, LatLng> offices;
 
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationClient;
 
+
+    Button toggle;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         getRetrofitCall();
-        offices=new HashMap<>();
+        offices = new HashMap<>();
+
+        toggle = findViewById(R.id.toggle_button);
+
+
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUpBottomSheetFragment();
+            }
+        });
+
     }
 
     public void getRetrofitCall() {
@@ -62,15 +89,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("onResponse: ", "" + medicareOfficeList.size());
                 Log.d("onResponse: ", "" + medicareOfficeList.get(0).getLatitude());
                 Log.d("onResponse: ", "" + medicareOfficeList.get(0).getLongtitude());
+
                 for (MedicareOffice b : medicareOfficeList) {
                     double lat = Double.valueOf(b.getLatitude());
                     double lng = Double.valueOf(b.getLongtitude());
                     LatLng temp = new LatLng(lat, lng);
-                    offices.put(b.getName_of_medical_office(),temp);
+                    offices.put(b.getName_of_medical_office(), temp);
                 }
 
-                for (String a: offices.keySet()) {
-                    LatLng temp =offices.get(a);
+
+
+                for (String a : offices.keySet()) {
+                    LatLng temp = offices.get(a);
                     mMap.addMarker(new MarkerOptions().position(temp).title(a));
                 }
             }
@@ -114,5 +144,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         settings.setZoomControlsEnabled(true);
     }
 
+
+    public void setUpBottomSheetFragment() {
+        TestingBottomSheeetFragment fragment = new TestingBottomSheeetFragment();
+        fragment.show(getSupportFragmentManager(),fragment.getTag());
+    }
 
 }

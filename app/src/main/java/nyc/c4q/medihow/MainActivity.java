@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity
         setFireBase();
         textView.setText("Heyyyyy "+ mUsername);
 
+
+
     }
 
     private void setFireBase() {
@@ -134,7 +136,6 @@ public class MainActivity extends AppCompatActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override
