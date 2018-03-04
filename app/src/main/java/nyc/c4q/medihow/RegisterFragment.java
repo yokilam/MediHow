@@ -61,7 +61,6 @@ public class RegisterFragment extends Fragment implements
                 }
             }
         });
-
         return view;
     }
 
@@ -88,18 +87,14 @@ public class RegisterFragment extends Fragment implements
                                             }
                                         }
                                     });
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(view.getContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
     }
-
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
