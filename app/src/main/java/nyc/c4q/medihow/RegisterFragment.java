@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -63,6 +64,7 @@ public class RegisterFragment extends Fragment implements
             public void onClick(View v) {
                 if (!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty() && !userName.getText().toString().isEmpty()) {
                     creatuser(email.getText().toString(), password.getText().toString());
+                    hideSoftKeyboard();
                 }
             }
         });
@@ -121,6 +123,10 @@ public class RegisterFragment extends Fragment implements
     }
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    }
 
+    public void hideSoftKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(view.getContext().INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(password.getWindowToken(), 0);
     }
 }

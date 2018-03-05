@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -80,7 +81,6 @@ public class SignInActivity extends AppCompatActivity implements
             case R.id.google_sign_in_button:
                 signIn();
             case R.id.sign_up:
-
                 RegisterFragment registerFragment = new RegisterFragment();
                 FragmentManager manager = getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -89,6 +89,7 @@ public class SignInActivity extends AppCompatActivity implements
             case R.id.sign_in_button:
                if (!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
                    signUser(email.getText().toString(),password.getText().toString());
+                   hideSoftKeyboard();
                }
                 break;
         }
@@ -163,6 +164,11 @@ public class SignInActivity extends AppCompatActivity implements
                         }
                     }
                 });
+    }
+
+    public void hideSoftKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(SignInActivity.this.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(password.getWindowToken(), 0);
     }
 
 }

@@ -47,6 +47,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/tintwhite"
         android:singleLine="true"
+        android:inputType="textPassword"
         />
 
     <Button
