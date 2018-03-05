@@ -17,14 +17,19 @@
             android:layout_height="match_parent"
             tools:context="nyc.c4q.medihow.MapsActivity" />
 
-        <Button
+        <ImageView
             android:id="@+id/toggle_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="57dp" />
+            android:layout_marginBottom="57dp"
+            android:background="@color/clear"
+            android:src="@drawable/list"
+            android:layout_marginStart="8dp"
+
+            />
 
 
     </RelativeLayout>

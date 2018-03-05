@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -51,8 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationClient;
 
-
-    Button toggle;
+    ImageView toggle;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -64,7 +64,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         offices = new HashMap<>();
 
         toggle = findViewById(R.id.toggle_button);
-
 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
