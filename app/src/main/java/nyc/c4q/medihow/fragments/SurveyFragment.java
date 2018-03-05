@@ -88,6 +88,7 @@ SurveryCallBack surveryCallBack;
                     surveryCallBack.startMapActivity();
                 }
                 else {
+                    Toast.makeText(view.getContext(), "You are not eligible for medicare/medicaid", Toast.LENGTH_LONG).show();
                     question.setText(questions[indexOfArray+1]);
                     indexOfArray=n;
                     yes.setSelected(false);
