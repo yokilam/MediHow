@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background2">
-
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +19,6 @@
             tools:text="@string/sign_in"
             android:textSize="30sp"
             android:textStyle="bold" />
-
         <EditText
             android:id="@+id/email"
             android:hint="@string/email_address"
@@ -32,7 +29,6 @@
             android:inputType="textEmailAddress"
             android:textColor="@color/tintwhite"
             android:textColorHint="@color/tintwhite"/>
-
         <EditText
             android:id="@+id/password"
             android:hint="@string/password"
@@ -42,7 +38,6 @@
             android:textColorHint="@color/tintwhite"
             android:textColor="@color/white"
             android:inputType="textPassword"/>
-
         <Button
             android:id="@+id/sign_in_button"
             android:text="Log In"
@@ -53,7 +48,6 @@
             android:backgroundTint="@color/clear"
             android:textColor="@color/white"
             android:layout_marginTop="20dp"/>
-
         <Button
             android:id="@+id/sign_up"
             android:layout_width="wrap_content"
@@ -64,8 +58,6 @@
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/clear"/>
-
-
         <com.google.android.gms.common.SignInButton
             android:id="@+id/google_sign_in_button"
             android:layout_width="wrap_content"
@@ -74,7 +66,5 @@
             android:layout_marginTop="50dp"
             android:visibility="visible"
             android:onClick="onClick" />
-
     </LinearLayout>
-
 </FrameLayout>
