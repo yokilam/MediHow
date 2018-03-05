@@ -42,7 +42,6 @@ public class TestingBottomSheeetFragment extends BottomSheetDialogFragment  {
                 dismiss();
             }
         }
-
         @Override
         public void onSlide(@NonNull View bottomSheet, float slideOffset) {
         }
@@ -66,8 +65,6 @@ public class TestingBottomSheeetFragment extends BottomSheetDialogFragment  {
             OfficeListAdapter adapter = new OfficeListAdapter(hello);
             recyclerView.setAdapter(adapter);
         }
-
-
             dialog.setContentView(contentView);
             CoordinatorLayout.LayoutParams layoutParams =
                     (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
