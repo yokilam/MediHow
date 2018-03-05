@@ -7,7 +7,8 @@
     android:background="@drawable/backgroundcolor"
     card_view:cardCornerRadius="10dp"
     card_view:cardElevation="2dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="@color/clear">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,13 +21,14 @@
             tools:text="SOME QUESTION"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/yes_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/white"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/no_radio_button"
             android:layout_marginStart="103dp"
@@ -40,7 +42,8 @@
             android:layout_marginEnd="23dp"
             android:layout_toStartOf="@+id/next"
             android:textSize="15sp"
-            tools:text="No" />
+            tools:text="No"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/next"
@@ -48,7 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:text="next" />
+            android:text="next"
+            android:textColor="@color/white"
+            android:background="@color/clear"/>
 
     </RelativeLayout>
 
