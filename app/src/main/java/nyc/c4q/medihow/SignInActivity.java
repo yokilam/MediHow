@@ -1,4 +1,4 @@
-package nyc.c4q.medihow.activites;
+package nyc.c4q.medihow;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -26,8 +26,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import nyc.c4q.medihow.MainActivity;
-import nyc.c4q.medihow.R;
 import nyc.c4q.medihow.fragments.RegisterFragment;
 
 public class SignInActivity extends AppCompatActivity implements

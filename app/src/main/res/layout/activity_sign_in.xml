@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background2">
+    android:background="@drawable/background2"
+    tools:context="nyc.c4q.medihow.SignInActivity">
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

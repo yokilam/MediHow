@@ -2,6 +2,7 @@ package nyc.c4q.medihow;
 
 import android.content.Intent;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import nyc.c4q.medihow.activites.MapsActivity;
-import nyc.c4q.medihow.activites.SignInActivity;
 import nyc.c4q.medihow.activites.SurveyActivity;
 
 import android.content.SharedPreferences;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences mSharedPreferences;
     private GoogleApiClient mGoogleApiClient;
     private Button takeTest;
-    private CardView testCard, locationCard;
+    private CardView testCard, locationCard, documentCard, resourceCard;
 
     TextView textView;
     private Button LocationButton;
@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity
         LocationButton= findViewById(R.id.find_the_nearest_location_button);
         testCard= findViewById(R.id.test_card_view);
         locationCard=findViewById(R.id.location_card_view);
+        documentCard=findViewById(R.id.document_card_view);
+        resourceCard=findViewById(R.id.other_resource_card);
 
         locationCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +74,26 @@ public class MainActivity extends AppCompatActivity
 //                        .addToBackStack("test").commit();
                 Intent intent= new Intent(MainActivity.this, SurveyActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        documentCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://www.health.ny.gov/health_care/medicaid/publications/docs/adm/6att1checklis.pdf";
+                Intent a = new Intent(Intent.ACTION_VIEW);
+                a.setData(Uri.parse(url));
+                startActivity(a);
+            }
+        });
+
+        resourceCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "http://www1.nyc.gov/site/ochia/index.page";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
 
