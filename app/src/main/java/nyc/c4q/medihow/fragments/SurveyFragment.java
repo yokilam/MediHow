@@ -1,4 +1,4 @@
-package nyc.c4q.medihow;
+package nyc.c4q.medihow.fragments;
 
 
 import android.content.Context;
@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import nyc.c4q.medihow.R;
 import nyc.c4q.medihow.model.SurveyQuestions;
 
 import static nyc.c4q.medihow.model.SurveyQuestions.questions;

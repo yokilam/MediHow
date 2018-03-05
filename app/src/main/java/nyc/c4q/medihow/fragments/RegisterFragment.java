@@ -1,4 +1,4 @@
-package nyc.c4q.medihow;
+package nyc.c4q.medihow.fragments;
 
 
 import android.content.DialogInterface;
@@ -25,6 +25,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+
+import nyc.c4q.medihow.MainActivity;
+import nyc.c4q.medihow.R;
+import nyc.c4q.medihow.activites.SurveyActivity;
 
 
 /**
