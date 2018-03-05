@@ -44,25 +44,17 @@ public class RegisterFragment extends Fragment implements
     private static final String TAG = "FragMent";
 
     public RegisterFragment() {
-        // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_register_, container, false);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
-
         regButton = view.findViewById(R.id.reg_in_button);
         email = view.findViewById(R.id.emai_frag);
         password = view.findViewById(R.id.password_frag);
         userName = view.findViewById(R.id.user_name);
-
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +73,6 @@ public class RegisterFragment extends Fragment implements
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mFirebaseAuth.getCurrentUser();
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -112,8 +103,6 @@ public class RegisterFragment extends Fragment implements
                                                         })
                                                         .setIcon(android.R.drawable.ic_dialog_alert)
                                                         .show();
-//                                                getActivity().startActivity(new Intent(view.getContext(), MainActivity.class));
-//                                                getActivity().finish();
                                             }
                                         }
                                     });

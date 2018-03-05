@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity
     private CardView testCard, locationCard;
 
     TextView textView;
-
     private Button LocationButton;
 
     @Override
@@ -77,21 +76,15 @@ public class MainActivity extends AppCompatActivity
         });
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        // Set default username is anonymous.
         mUsername = ANONYMOUS;
-
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         setFireBase();
         textView.setText("Hello "+ mUsername);
-
-
-
     }
 
     private void setFireBase() {
         if (mFirebaseUser == null) {
-            // Not signed in, launch the Sign In activity
             startActivity(new Intent(this, SignInActivity.class));
             finish();
             return;
@@ -101,7 +94,6 @@ public class MainActivity extends AppCompatActivity
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
         }
-
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)

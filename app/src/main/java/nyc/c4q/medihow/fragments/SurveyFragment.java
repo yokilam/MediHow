@@ -66,7 +66,6 @@ SurveryCallBack surveryCallBack;
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(yes.isChecked()) {
                     editor.putString(questions[indexOfArray],yes.getText().toString());
                     Log.d("ddd", "onClick:"+ yes.getText().toString());
@@ -84,7 +83,6 @@ SurveryCallBack surveryCallBack;
                 }
                 int n = indexOfArray+1;
 
-
                 if(n==6){
                     Toast.makeText(view.getContext(), "You are eligible for medicare/medicaid", Toast.LENGTH_LONG).show();
                     surveryCallBack.startMapActivity();
@@ -94,22 +92,13 @@ SurveryCallBack surveryCallBack;
                     indexOfArray=n;
                     yes.setSelected(false);
                     no.setSelected(false);
-
                 }
             }
         });
-
         return view;
     }
 
     public interface SurveryCallBack{
         void startMapActivity();
-
-
-
     }
-
-
-
-
 }

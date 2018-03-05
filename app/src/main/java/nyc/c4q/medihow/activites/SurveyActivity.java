@@ -10,6 +10,7 @@ import android.util.Log;
 
 import java.util.Map;
 
+import nyc.c4q.medihow.MainActivity;
 import nyc.c4q.medihow.R;
 import nyc.c4q.medihow.fragments.SurveyFragment;
 import nyc.c4q.medihow.model.SurveyQuestions;
@@ -19,28 +20,26 @@ import nyc.c4q.medihow.model.SurveyQuestions;
  */
 
 public class SurveyActivity extends AppCompatActivity implements SurveyFragment.SurveryCallBack {
-   // Context context;
     public static final String RETRIEVE = "retrieving questions";
     SharedPreferences prefs;
 
 
-   @Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_survey);
-       prefs = getApplicationContext().getSharedPreferences(
-               "app", Context.MODE_PRIVATE);
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_survey);
+        prefs = getApplicationContext().getSharedPreferences(
+                "app", Context.MODE_PRIVATE);
         getSurveyQuestions();
 //        question.setText(SurveyQuestions.questions[0]);
 
-       getSupportFragmentManager().beginTransaction().
-               replace(R.id.survey_fragment_container, new SurveyFragment()).
-               addToBackStack("survey").commit();
-   }
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.survey_fragment_container, new SurveyFragment()).
+                addToBackStack("survey").commit();
+    }
 
     public SurveyQuestions getSurveyQuestions() {
-        SurveyQuestions surveyQuestions= new SurveyQuestions();
+        SurveyQuestions surveyQuestions = new SurveyQuestions();
         surveyQuestions.questions[0] = getString(R.string.prove_identity);
         surveyQuestions.questions[1] = getString(R.string.prove_income);
         surveyQuestions.questions[2] = getString(R.string.prove_address);
@@ -53,25 +52,31 @@ public class SurveyActivity extends AppCompatActivity implements SurveyFragment.
     }
 
 
-
     @Override
     public void startMapActivity() {
-        int count=0;
-        Map<String,?> keys = prefs.getAll();
+        int count = 0;
+        Map<String, ?> keys = prefs.getAll();
 
-        for(Map.Entry<String,?> entry : keys.entrySet()){
-            if(entry.getValue().equals("yes")){
+        for (Map.Entry<String, ?> entry : keys.entrySet()) {
+            if (entry.getValue().equals("yes")) {
                 count++;
             }
         }
-        if(count>2) {
+        if (count > 2) {
             Intent intent = new Intent(SurveyActivity.this, MapsActivity.class);
             startActivity(intent);
-        }
-        else{
+        } else {
             String url = "http://www1.nyc.gov/site/ochia/index.page";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
-            startActivity(i);        }
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(SurveyActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

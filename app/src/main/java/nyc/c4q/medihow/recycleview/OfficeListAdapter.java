@@ -23,7 +23,6 @@ public class OfficeListAdapter extends RecyclerView.Adapter<OfficeListAdapter.Li
 
     List<MedicareOffice> officeList;
 
-
     public OfficeListAdapter(List<MedicareOffice> officeList) {
         this.officeList = officeList;
     }
@@ -31,7 +30,6 @@ public class OfficeListAdapter extends RecyclerView.Adapter<OfficeListAdapter.Li
     @Override
     public ListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
-
         return new ListHolder(view);
     }
 
@@ -47,7 +45,6 @@ public class OfficeListAdapter extends RecyclerView.Adapter<OfficeListAdapter.Li
                 holder.context.startActivity(call);
             }
         });
-
         holder.businessName.setText(office.getName_of_medical_office());
         holder.businessName.setOnClickListener(new View.OnClickListener() {
             @Override
