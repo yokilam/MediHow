@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
     <TextView
@@ -10,16 +10,21 @@
         android:layout_height="wrap_content"
         tools:text="Office title"
         android:layout_weight="1"
-        android:textSize="20dp"
-        android:layout_marginStart="8dp"
-        android:textStyle="bold"/>
+        android:textSize="15dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:background="@color/clear"/>
     <TextView
         android:id="@+id/office_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="office phone number"
-        android:textSize="15dp"
+        android:textSize="12dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="3dp"
+        android:background="@color/clear"/>
+
 
 </LinearLayout>

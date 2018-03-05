@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -53,6 +54,9 @@ public class TestingBottomSheeetFragment extends BottomSheetDialogFragment  {
         hello = new ArrayList<>();
         RecyclerView recyclerView = contentView.findViewById(R.id.bottom_cycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(contentView.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(contentView.getContext(),LinearLayoutManager.VERTICAL));
+        recyclerView.hasFixedSize();
+
 
         hello = MapsActivity.medicareOfficeList;
         if (hello != null) {
