@@ -42,7 +42,8 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".activites.SignInActivity" />
         <activity android:name=".activites.SurveyActivity" />
-        <activity android:name=".activites.SplashActivity">
+        <activity android:name=".activites.SplashActivity"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
