@@ -15,7 +15,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="nyc.c4q.medihow.MapsActivity" />
+            tools:context="nyc.c4q.medihow.activites.MapsActivity" />
 
         <ImageView
             android:id="@+id/toggle_button"

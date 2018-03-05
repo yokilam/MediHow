@@ -1,4 +1,4 @@
-package nyc.c4q.medihow;
+package nyc.c4q.medihow.activites;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,13 +10,9 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -29,14 +25,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
-import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import nyc.c4q.medihow.MainActivity;
+import nyc.c4q.medihow.R;
+import nyc.c4q.medihow.fragments.TestingBottomSheeetFragment;
 import nyc.c4q.medihow.model.MedicareOffice;
+import nyc.c4q.medihow.retrofit.MedicareOfficeService;
 import nyc.c4q.medihow.retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,9 +44,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private MedicareOfficeService medicareOfficeService;
     public static List<MedicareOffice> medicareOfficeList;
 
-    private HashMap<String, LatLng> offices;
+    private static HashMap<String, LatLng> offices;
 
-    private GoogleMap mMap;
+    private static GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationClient;
 
     ImageView toggle;
@@ -156,6 +153,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void setUpBottomSheetFragment() {
         TestingBottomSheeetFragment fragment = new TestingBottomSheeetFragment();
         fragment.show(getSupportFragmentManager(),fragment.getTag());
+    }
+
+    public static void moveCamera(String key){
+        CameraPosition myLocation = CameraPosition.builder()
+                .target(offices.get(key))
+                .zoom(16)
+                .bearing(0)
+                .tilt(45)
+                .build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(myLocation));
     }
 
     @Override

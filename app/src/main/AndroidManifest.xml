@@ -38,11 +38,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".activites.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".SurveyActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activites.SignInActivity" />
+        <activity android:name=".activites.SurveyActivity" />
+        <activity android:name=".activites.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

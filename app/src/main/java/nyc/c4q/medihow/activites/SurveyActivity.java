@@ -1,35 +1,24 @@
-package nyc.c4q.medihow;
+package nyc.c4q.medihow.activites;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.util.List;
 import java.util.Map;
 
-import nyc.c4q.medihow.model.MedicareOffice;
+import nyc.c4q.medihow.R;
+import nyc.c4q.medihow.fragments.SurveyFragment;
 import nyc.c4q.medihow.model.SurveyQuestions;
-import nyc.c4q.medihow.retrofit.RetrofitClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by c4q on 3/3/18.
  */
 
-public class SurveyActivity extends AppCompatActivity implements SurveyFragment.SurveryCallBack{
+public class SurveyActivity extends AppCompatActivity implements SurveyFragment.SurveryCallBack {
    // Context context;
     public static final String RETRIEVE = "retrieving questions";
     SharedPreferences prefs;

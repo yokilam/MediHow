@@ -1,4 +1,4 @@
-package nyc.c4q.medihow;
+package nyc.c4q.medihow.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -16,6 +16,9 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import nyc.c4q.medihow.recycleview.OfficeListAdapter;
+import nyc.c4q.medihow.R;
+import nyc.c4q.medihow.activites.MapsActivity;
 import nyc.c4q.medihow.model.MedicareOffice;
 
 /**
